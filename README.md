@@ -15,16 +15,18 @@ Live zum Ausprobieren: **<https://sturm.optikorakel.de/>** (Handy- und Desktop-t
 
 | Datei | Zweck |
 |---|---|
-| `sturm-konoid.html` | komplette Anwendung (HTML, CSS, JavaScript in einer Datei) |
+| `index.html` | komplette Anwendung (HTML, CSS, JavaScript in einer Datei); three.js wird vom CDN geladen |
 | `vorschau.png` | Vorschaubild 1200 × 630 (exakt 1,91:1) für Social-Media-Karten und diese README |
 | `make-preview.mjs` | erzeugt `vorschau.png` aus derselben Optik (`node make-preview.mjs vorschau.png`) |
-| `vendor/three.module.js` | three.js r169 – lokales Modul (Offline-Fallback) |
-| `vendor/three-legacy.min.js` | älteres three.js als klassisches Skript (Fallback für Doppelklick ohne Server) |
+
+Eine eigene Kopie von three.js ist nicht im Repository. Wer ohne Internet arbeiten will, legt
+`three.module.js` (aus `node_modules/three/build/`) neben `index.html` und ruft den Ordner über
+einen lokalen Webserver auf – Browser verbieten es vom Dateisystem aus, lokale Module zu laden.
 
 ## Vorschaubild beim Teilen
 
 Teilt jemand den Link, zeigen Facebook, LinkedIn, WhatsApp, X & Co. das Bild, das
-über **Open-Graph-Meta-Tags** im Kopf von `sturm-konoid.html` angesprochen wird
+über **Open-Graph-Meta-Tags** im Kopf von `index.html` angesprochen wird
 (`og:image`, `og:title`, `og:description`, `og:url`, dazu `twitter:card`).
 Wichtig:
 
@@ -70,21 +72,22 @@ eingeklappt; auf dem Desktop bleibt die Seitenanordnung unverändert.
 
 ## Ausführen
 
-1. **Online (einfachster Weg):** `sturm-konoid.html` doppelklicken – three.js wird vom CDN geladen.
-2. **Offline per Doppelklick:** `vendor/` neben die HTML-Datei legen (Notladung über das klassische Skript).
-3. **Offline mit aktuellem three.js:** Ordner lokal servieren, z. B. `npx serve .` und dann `http://localhost:3000/sturm-konoid.html` öffnen.
+1. **Im Browser (Standard):** `index.html` doppelklicken – three.js kommt vom CDN, dafür braucht es Internet.
+2. **Lokal mit eigener three.js-Kopie:** `three.module.js` (aus `node_modules/three/build/`) neben
+   `index.html` legen, Ordner servieren (`npx serve .`) und `http://localhost:3000/` öffnen.
+3. **Online-Demo:** <https://sturm.optikorakel.de/>
 
 ## Veröffentlichen
 
-Die Demo läuft auf `https://sturm.optikorakel.de/`. Für ein Update dort genügt das Hochladen von
-zwei Dateien in den Web-Root:
+Die Demo läuft auf `https://sturm.optikorakel.de/`. Für ein Update genügt das Hochladen von zwei
+Dateien in den Web-Root:
 
-1. `sturm-konoid.html` – auf dem Server als **`index.html`** ablegen
-2. `vorschau.png` – unverändert daneben (Web-Root), damit geteilte Links ein Vorschaubild zeigen
+1. `index.html` – die Anwendung selbst, unverändert unter diesem Namen
+2. `vorschau.png` – daneben, damit geteilte Links ein Vorschaubild zeigen
 
-`vendor/` darf mit hochgeladen werden, ist aber nicht nötig: ohne diesen Ordner lädt die Seite
-three.js vom CDN. Alternativ lässt sich das Repository auch als GitHub-Seite betreiben
-(*Settings → Pages*, Branch `main`, Ordner `/ (root)`); dann in den Meta-Tags die passende
+three.js wird von dort aus direkt vom CDN geladen, ein eigener Ordner dafür ist nicht nötig.
+Alternativ lässt sich das Repository auch als GitHub-Seite betreiben (*Settings → Pages*,
+Branch `main`, Ordner `/ (root)`) – dann in den Meta-Tags die passende
 `<benutzer>.github.io`-Adresse eintragen.
 
 Nach dem Deploy die Karte testen: Share-Debugger (Facebook) bzw. Card Validator (X) – beide

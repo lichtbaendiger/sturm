@@ -7,5 +7,7 @@ desktop.ini
 .vscode/
 .idea/
 
-# lokal eingebundenes three.js bewusst im Repo: damit die Demo offline laeuft
-# (vendor/three.module.js, vendor/three-legacy.min.js)
+# three.js wird vom CDN geladen; wer eine eigene Kopie zum Testen ablegt, nicht einchecken
+three.module.js
+three-legacy.min.js
+node_modules/

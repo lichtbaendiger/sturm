@@ -1,4 +1,4 @@
-/* Erstellt das Social-Media-Vorschaubild (1200 x 630 PNG) fuer sturm-konoid.html.
+/* Erstellt das Social-Media-Vorschaubild (1200 x 630 PNG) fuer index.html.
    Gezeichnet wird dieselbe Optik wie in der 3D-Demo: Achsenpunkt, Linse, Bundel,
    Fokalfiguren, beide Bildlinien, kleinster Verwirrungskreis - mit klassischer
    Blickrichtung (Objekt links, Bild rechts). Reines Node, keine Zusatzbibliothek. */
