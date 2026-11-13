@@ -9,14 +9,33 @@ Fokalfiguren das **Sturmsche Konoid** und geht durch die **beiden Bildlinien**
 
 Live zum Ausprobieren: *(GitHub-Pages-URL nach dem Aktivieren hier eintragen)*
 
+![Vorschau: Sturmsches Konoid mit Reglern, Messwerten und Strahlenbündel](vorschaubild.png)
+
 ## Inhalt
 
 | Datei | Zweck |
 |---|---|
 | `sturm-konoid.html` | komplette Anwendung (HTML, CSS, JavaScript in einer Datei) |
+| `vorschaubild.png` | Bildschirmfoto der laufenden Demo, 1920 × 1088 – dient als Social-Media-Vorschaubild |
+| `vorschau.png` | zusätzlich erzeugte Vorschau im Lehrbuch-Stil, 1200 × 630 |
+| `make-preview.mjs` | erzeugt `vorschau.png` aus derselben Optik (`node make-preview.mjs vorschau.png`) |
 | `vendor/three.module.js` | three.js r169 – lokales Modul (Offline-Fallback) |
 | `vendor/three-legacy.min.js` | älteres three.js als klassisches Skript (Fallback für Doppelklick ohne Server) |
-| `frotzmaennchen.txt` | ASCII-Vorlage, die als HTML-Kommentar im Quelltext der Demo steckt |
+
+## Vorschaubild beim Teilen
+
+Teilt jemand den Link, zeigen Facebook, LinkedIn, WhatsApp, X & Co. das Bild, das
+über **Open-Graph-Meta-Tags** im Kopf von `sturm-konoid.html` angesprochen wird
+(`og:image`, `og:title`, `og:description`, `og:url`, dazu `twitter:card`).
+Wichtig:
+
+* Crawler lesen diese Meta-Angaben – ein per CSS verstecktes `<img>` im Körper wird nicht ausgewertet.
+* `og:image` und `og:url` brauchen eine **absolute, öffentlich erreichbare URL**; aktuell auf GitHub-Pages eingetragen.
+* Damit die Adresse existiert: Repo **öffentlich** stellen und *Settings → Pages* aktivieren (siehe unten).
+* Karten rechnen mit etwa 1,91:1. Das Foto ist 1920 × 1088 (1,77:1) und wird dafür oben und unten ein wenig beschnitten; `vorschau.png` (1200 × 630) passt exakt und lässt sich mit `node make-preview.mjs vorschau.png` neu erzeugen – einfach in den Meta-Tags umtragen.
+* Für das Teilen des **Repo-Links** setzt GitHub ein eigenes Vorschaubild: *Settings → Social preview* → Bild hochladen.
+* Prüfen lässt sich das nach dem Deploy mit dem Share-Debugger von Facebook oder dem Twitter/X Card Validator.
+
 
 ## Physik (paraxiales Dünnglas-Modell)
 
