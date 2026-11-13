@@ -1,0 +1,11 @@
+# Betreib- und Editor-Reste
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+*.tmp
+.vscode/
+.idea/
+
+# lokal eingebundenes three.js bewusst im Repo: damit die Demo offline laeuft
+# (vendor/three.module.js, vendor/three-legacy.min.js)

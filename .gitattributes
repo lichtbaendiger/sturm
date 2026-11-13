@@ -1,0 +1,9 @@
+# Zeilenenden im Repo einheitlich (ASCII-Art und HTML bleiben so, wie sie sind)
+*.html text eol=lf
+*.js   text eol=lf
+*.css  text eol=lf
+*.md   text eol=lf
+*.txt  text eol=lf
+*.json text eol=lf
+*.png binary
+*.jpg binary
