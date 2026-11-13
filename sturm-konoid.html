@@ -76,8 +76,11 @@
      Social-Media-Vorschau: Crawler lesen diese Meta-Angaben, keine
      versteckten <img>-Elemente im Koerper. og:image verlangt eine
      absolute URL und ein echtes Bild (hier 1200 x 630 PNG).
+     Noetig auf dem Webspace: diese Datei als index.html und daneben
+     vorschau.png im selben Ordner (Web-Root).
      Bild erzeugen:  node make-preview.mjs vorschau.png
      ============================================================ -->
+<link rel="canonical" href="https://sturm.optikorakel.de/" />
 <meta name="description" content="Interaktive 3D-Demo: ein Achsenpunkt strahlt durch eine runde astigmatische Linse; hinter der Linse entsteht das Sturmsche Konoid mit zwei Bildlinien und dem kleinsten Verwirrungskreis. Regler fuer Brechkraft, Objektweite und Apertur, mit Messwerten, Handy-Layout und three.js." />
 <meta name="theme-color" content="#05070d" />
 <meta property="og:type" content="website" />
@@ -85,19 +88,20 @@
 <meta property="og:locale" content="de_DE" />
 <meta property="og:title" content="Sturmsches Konoid &ndash; 3D-Demo mit zwei Bildlinien" />
 <meta property="og:description" content="Leuchtpunkt auf der Achse, runde astigmatische Linse, dahinter das Sturmsche Konoid durch die tangentiale und die sagittale Bildlinie &ndash; drehbar, verstellbar, mit Messwerten." />
-<meta property="og:url" content="https://lichtbaendiger.github.io/sturm/sturm-konoid.html" />
-<meta property="og:image" content="https://lichtbaendiger.github.io/sturm/vorschau.png" />
+<meta property="og:url" content="https://sturm.optikorakel.de/" />
+<meta property="og:image" content="https://sturm.optikorakel.de/vorschau.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="3D-Ansicht: Leuchtpunkt links, gelber Objektkegel, Linsenrand, blaues Buendel mit Ellipsenschar, rote Bildlinie I und gruene Bildlinie II" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Sturmsches Konoid &ndash; 3D-Demo" />
 <meta name="twitter:description" content="Astigmatische Linse, zwei Bildlinien, kleinster Verwirrungskreis &ndash; als drehbare 3D-Simulation in einer einzigen HTML-Datei." />
-<meta name="twitter:image" content="https://lichtbaendiger.github.io/sturm/vorschau.png" />
+<meta name="twitter:image" content="https://sturm.optikorakel.de/vorschau.png" />
 <meta name="twitter:image:alt" content="Vorschau: Sturmsches Konoid mit tangentialer und sagittaler Bildlinie" />
-<!-- Bild erzeigen:  node make-preview.mjs vorschau.png
-     Ein eigenes Bildschirmfoto (z.B. 1920 x 1088) kann stattdessen eingetragen
-     werden: Datei ins Repo legen und die beiden Bild-URLs darauf umstellen.  -->
+<!-- Bild erzeugen:  node make-preview.mjs vorschau.png
+     Das Bild muss auf dem Webspace neben index.html liegen, sonst zeigt
+     keine Karte ein Vorschaubild. Ein eigenes Foto (z.B. 1920 x 1088) ist
+     moeglich: hochladen und die beiden Bild-URLs samt Maßangaben umtragen. -->
 
 <!-- ============================================================
      STURMSCHES KONOID  ·  Ein-Klick-Demo in 3D

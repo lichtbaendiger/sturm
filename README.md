@@ -7,7 +7,7 @@ Fokalfiguren das **Sturmsche Konoid** und geht durch die **beiden Bildlinien**
 (tangential näher und kürzer, sagittal weiter und länger) mit dem
 **kleinsten Verwirrungskreis** dazwischen.
 
-Live zum Ausprobieren: *(GitHub-Pages-URL nach dem Aktivieren hier eintragen)*
+Live zum Ausprobieren: **<https://sturm.optikorakel.de/>** (Handy- und Desktop-tauglich)
 
 ![Vorschau: Sturmsches Konoid mit Leuchtpunkt, Objektkegel, Linse, zwei Bildlinien](vorschau.png)
 
@@ -29,8 +29,11 @@ Teilt jemand den Link, zeigen Facebook, LinkedIn, WhatsApp, X & Co. das Bild, da
 Wichtig:
 
 * Crawler lesen diese Meta-Angaben – ein per CSS verstecktes `<img>` im Körper wird nicht ausgewertet.
-* `og:image` und `og:url` brauchen eine **absolute, öffentlich erreichbare URL**; aktuell auf GitHub-Pages eingetragen.
-* Damit die Adresse existiert: Repo **öffentlich** stellen und *Settings → Pages* aktivieren (siehe unten).
+* `og:image` und `og:url` brauchen eine **absolute, öffentlich erreichbare URL**; eingetragen ist
+  `https://sturm.optikorakel.de/` mit dem Bild `https://sturm.optikorakel.de/vorschau.png`.
+* Damit die Karte wirklich ein Bild zeigt, muss **beides auf dem Webspace liegen**: die Seite als
+  `index.html` im Web-Root und daneben `vorschau.png`. Fehlt die Bilddatei, bleibt die Karte leer –
+  die Meta-Tags allein reichen nicht.
 * Karten rechnen mit etwa 1,91:1 – `vorschau.png` (1200 × 630) passt exakt. Wer lieber ein
   Bildschirmfoto der laufenden Demo zeigen will legt es ins Repo (z. B. 1920 × 1088), passt in
   den Meta-Tags `og:image`, `og:image:width/-height` und `twitter:image` die Datei samt Maß an,
@@ -56,7 +59,7 @@ beide Bildlinien scharf definiert, wie in der Lehrbuchzeichnung.
 
 ## Bedienung
 
-* **Drehen:** linke Maustaste ziehen ( bzw. 1 Finger)
+* **Drehen:** linke Maustaste ziehen (bzw. 1 Finger)
 * **Zoomen:** Mausrad (bzw. 2 Finger auseinander/zusammen)
 * **Bereich verschieben:** rechte **oder** mittlere Maustaste gedrückt halten und ziehen, alternativ `Shift` + Ziehen (bzw. 2 Finger gemeinsam bewegen)
 * **Tasten:** `H` Regler, `W` Messwerte, `Leertaste`/`P` Pause, `R` Licht-Neuaufbau, `F` Ansicht einpassen
@@ -71,7 +74,18 @@ eingeklappt; auf dem Desktop bleibt die Seitenanordnung unverändert.
 2. **Offline per Doppelklick:** `vendor/` neben die HTML-Datei legen (Notladung über das klassische Skript).
 3. **Offline mit aktuellem three.js:** Ordner lokal servieren, z. B. `npx serve .` und dann `http://localhost:3000/sturm-konoid.html` öffnen.
 
-## GitHub-Seiten aktivieren
+## Veröffentlichen
 
-Repository → *Settings* → *Pages* → Source **Deploy from a branch**, Branch `main` / `/ (root)` → Save.
-Danach läuft die Demo unter `https://<benutzer>.github.io/<repository>/sturm-konoid.html`.
+Die Demo läuft auf `https://sturm.optikorakel.de/`. Für ein Update dort genügt das Hochladen von
+zwei Dateien in den Web-Root:
+
+1. `sturm-konoid.html` – auf dem Server als **`index.html`** ablegen
+2. `vorschau.png` – unverändert daneben (Web-Root), damit geteilte Links ein Vorschaubild zeigen
+
+`vendor/` darf mit hochgeladen werden, ist aber nicht nötig: ohne diesen Ordner lädt die Seite
+three.js vom CDN. Alternativ lässt sich das Repository auch als GitHub-Seite betreiben
+(*Settings → Pages*, Branch `main`, Ordner `/ (root)`); dann in den Meta-Tags die passende
+`<benutzer>.github.io`-Adresse eintragen.
+
+Nach dem Deploy die Karte testen: Share-Debugger (Facebook) bzw. Card Validator (X) – beide
+cachen Vorschaubilder, im Zweifel einmal neu anfragen.
