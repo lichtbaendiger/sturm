@@ -7,7 +7,10 @@ Fokalfiguren das **Sturmsche Konoid** und geht durch die **beiden Bildlinien**
 (tangential näher und kürzer, sagittal weiter und länger) mit dem
 **kleinsten Verwirrungskreis** dazwischen.
 
-Live zum Ausprobieren: **<https://sturm.optikorakel.de/>** (Handy- und Desktop-tauglich)
+Live zum Ausprobieren (baugleich, Handy und Desktop):
+
+* **<https://sturm.optikorakel.de/>** – eigene Domain, Hauptadresse
+* **<https://lichtbaendiger.github.io/sturm/>** – GitHub-Pages-Zweig aus diesem Repo
 
 ![Vorschau: Sturmsches Konoid mit Leuchtpunkt, Objektkegel, Linse, zwei Bildlinien](vorschau.png)
 
@@ -31,11 +34,15 @@ Teilt jemand den Link, zeigen Facebook, LinkedIn, WhatsApp, X & Co. das Bild, da
 Wichtig:
 
 * Crawler lesen diese Meta-Angaben – ein per CSS verstecktes `<img>` im Körper wird nicht ausgewertet.
-* `og:image` und `og:url` brauchen eine **absolute, öffentlich erreichbare URL**; eingetragen ist
-  `https://sturm.optikorakel.de/` mit dem Bild `https://sturm.optikorakel.de/vorschau.png`.
-* Damit die Karte wirklich ein Bild zeigt, muss **beides auf dem Webspace liegen**: die Seite als
-  `index.html` im Web-Root und daneben `vorschau.png`. Fehlt die Bilddatei, bleibt die Karte leer –
-  die Meta-Tags allein reichen nicht.
+* `og:url` und `rel="canonical"` nennen die **Hauptadresse** `https://sturm.optikorakel.de/`;
+  geteilte Links zeigen dadurch immer auf die Domain, auch wenn gerade die Pages-Adresse kopiert wurde.
+* `og:image` und `twitter:image` zeigen bewusst auf den **Pages-Pfad**
+  `https://lichtbaendiger.github.io/sturm/vorschau.png`: der läuft über GitHubs CDN, ist also
+  auch erreichbar, falls die eigene Domain einmal umzieht oder abläuft. Beide Adressen bedienen
+  dieselbe Datei, jederzeit kann auch die Domain-Variante eingetragen werden.
+* Damit die Karte wirklich ein Bild zeigt, muss die Bilddatei **öffentlich erreichbar** sein –
+  auf dem Webspace neben `index.html` im Web-Root, bei Pages liegt sie dank dieses Repos schon
+  im Wurzelverzeichnis. Fehlt die Datei, bleibt die Karte leer; die Meta-Tags allein reichen nicht.
 * Karten rechnen mit etwa 1,91:1 – `vorschau.png` (1200 × 630) passt exakt. Wer lieber ein
   Bildschirmfoto der laufenden Demo zeigen will legt es ins Repo (z. B. 1920 × 1088), passt in
   den Meta-Tags `og:image`, `og:image:width/-height` und `twitter:image` die Datei samt Maß an,
@@ -75,20 +82,20 @@ eingeklappt; auf dem Desktop bleibt die Seitenanordnung unverändert.
 1. **Im Browser (Standard):** `index.html` doppelklicken – three.js kommt vom CDN, dafür braucht es Internet.
 2. **Lokal mit eigener three.js-Kopie:** `three.module.js` (aus `node_modules/three/build/`) neben
    `index.html` legen, Ordner servieren (`npx serve .`) und `http://localhost:3000/` öffnen.
-3. **Online-Demo:** <https://sturm.optikorakel.de/>
+3. **Online:** <https://sturm.optikorakel.de/> oder <https://lichtbaendiger.github.io/sturm/>
 
 ## Veröffentlichen
 
-Die Demo läuft auf `https://sturm.optikorakel.de/`. Für ein Update genügt das Hochladen von zwei
-Dateien in den Web-Root:
+**GitHub-Pages** baut direkt aus diesem Repo: *Settings → Pages* → Quelle **Deploy from a
+branch**, Branch `main`, Ordner `/ (root)` → Save. Da `index.html` und `vorschau.png` schon im
+Wurzelverzeichnis liegen, sind keine weiteren Dateien nötig; jeder Push auf `main` ist nach dem
+Deployment unter `https://<benutzer>.github.io/<repo>/` erreichbar.
 
-1. `index.html` – die Anwendung selbst, unverändert unter diesem Namen
-2. `vorschau.png` – daneben, damit geteilte Links ein Vorschaubild zeigen
-
-three.js wird von dort aus direkt vom CDN geladen, ein eigener Ordner dafür ist nicht nötig.
-Alternativ lässt sich das Repository auch als GitHub-Seite betreiben (*Settings → Pages*,
-Branch `main`, Ordner `/ (root)`) – dann in den Meta-Tags die passende
-`<benutzer>.github.io`-Adresse eintragen.
+**Eigene Domain** (`sturm.optikorakel.de`): zwei Dateien in den Web-Root hochladen –
+`index.html` und `vorschau.png`. three.js laden beide Varianten direkt vom CDN, ein eigener
+Ordner dafür ist nicht nötig. Falls das Vorschaubild künftig von der eigenen Domain kommen soll,
+in den Meta-Tags `og:image` und `twitter:image` auf
+`https://sturm.optikorakel.de/vorschau.png` umstellen.
 
 Nach dem Deploy die Karte testen: Share-Debugger (Facebook) bzw. Card Validator (X) – beide
 cachen Vorschaubilder, im Zweifel einmal neu anfragen.
